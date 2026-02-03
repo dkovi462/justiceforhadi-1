@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Justice For Hadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fdfdfd;
+            color: #111;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 30px 15px;
+        }
+        .profile-img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+            border: 4px solid #fff;
+        }
+        h1 {
+            color: #c40000;
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: 800;
+        }
+        .label {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        /* টাইমার বক্স থেকে লাল বর্ডার ও শ্যাডো সরিয়ে পরিষ্কার করা হয়েছে */
+        .timer-box {
+            display: inline-block;
+            background: #f1f1f1; /* হালকা ধূসর ব্যাকগ্রাউন্ড */
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333; /* লেখার রঙ কালো/গাঢ় ধূসর করা হয়েছে */
+            margin-bottom: 40px;
+            border: none; /* সব লাল বর্ডার সরিয়ে দেওয়া হয়েছে */
+        }
+
+        .download-container {
+            margin-top: 10px;
+        }
+        .modern-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #e60000, #c40000);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(196, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .modern-download i {
+            margin-right: 12px;
+            font-size: 22px;
+        }
+        .modern-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(196, 0, 0, 0.5);
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            .timer-box { font-size: 1.1rem; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://i.ibb.co.com/5WQkMCrP/image.jpg" alt="প্রতিবাদ" class="profile-img">
+
+    <h1></h1>
+
+    <div class="label">গুলিবিদ্ধ হওয়ার পর কেটে গেছে</div>
+    
+    <div id="timer" class="timer-box">লোড হচ্ছে...</div>
+
+    <div class="download-container">
+        <a href="https://www.mediafire.com/file/qky18dokclolm5t/Justice_for_osmanhadi_ovi.apk/file" class="modern-download">
+            <i class="fas fa-cloud-download-alt"></i> ডাউনলোড করুন
+        </a>
+    </div>
+</div>
+
+<script>
+    const startTime = new Date("2025-12-12T10:00:00").getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const diff = now - startTime;
+
+        if (diff < 0) {
+            document.getElementById("timer").innerHTML = "নির্ধারিত সময় এখনো আসেনি";
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("timer").innerHTML =
+            `${days} দিন ${hours} ঘণ্টা ${minutes} মিনিট ${seconds} সেকেন্ড`;
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
